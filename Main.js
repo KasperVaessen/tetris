@@ -3,6 +3,7 @@ let blocks = [];
 let size;
 let board = [];
 let moveSpace;
+let score = 0;
 
 function setup() {
     size = 20;
@@ -20,6 +21,7 @@ function setup() {
 
 function draw() {
     background(220);
+    writeScore();
     line(0, moveSpace*40, size*40, moveSpace*40)
     blocks[0].update(frameCount);
     blocks[0].draw();
@@ -42,7 +44,7 @@ function draw() {
         }
         for (let i = 0; i < size; i++) {
             if(checkComplete(i)) {
-                console.log(i);
+                score += size;
                 removeRow(i);
             }
         }
@@ -83,6 +85,13 @@ function checkGameOver() {
         }
     }
     return false;
+}
+
+function writeScore() {
+    fill("black");
+    textAlign(RIGHT, TOP);
+    textSize(20);
+    text("Score: " + score, size*40-2, 2);
 }
 
 function keyPressed() {
