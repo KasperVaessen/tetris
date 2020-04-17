@@ -72,12 +72,20 @@ class RowBlock extends Block{
                     this.xPos += direction;
                 }
             } else {
-                if(this.xPos+1 != size && board[this.xPos+1][this.yPos] != 1) {
+                if(this.xPos+1 != size
+                    && board[this.xPos+1][this.yPos] != 1
+                    && board[this.xPos+1][this.yPos+1] != 1
+                    && board[this.xPos+1][this.yPos+2] != 1
+                    && board[this.xPos+1][this.yPos+3] != 1) {
                     this.xPos += direction;
                 }
             }
         } else if(direction == -1) {
-            if(this.xPos != 0 && board[this.xPos-1][this.yPos] != 1) {
+            if(this.xPos != 0
+                && board[this.xPos-1][this.yPos] != 1
+                && board[this.xPos-1][this.yPos+1] != 1
+                && board[this.xPos-1][this.yPos+2] != 1
+                && board[this.xPos-1][this.yPos+3] != 1) {
                 this.xPos += direction;
             }
         }

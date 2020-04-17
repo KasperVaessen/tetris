@@ -10,7 +10,7 @@ function setup() {
     }
     speed = 1;
     createCanvas(size*40, size*40);
-    blocks.push(new RowBlock(0, 0, 0, speed));
+    blocks.push(new LBlock(0, 0, 0, speed));
 }
 
 function draw() {
@@ -20,7 +20,15 @@ function draw() {
         blocks[i].draw();
     }
     if(blocks[0].onEdge()) {
-        blocks.unshift(new RowBlock(0, 0, 0, speed))
+        let number = random();
+        if(number < 0.33) {
+            blocks.unshift(new RowBlock(0, 0, 0, speed))
+        } else if(number < 0.67) {
+            blocks.unshift(new SquareBlock(0, 0, 0, speed))
+        } else {
+            blocks.unshift(new LBlock(0, 0, 0, speed))
+        }
+
     }
 }
 
