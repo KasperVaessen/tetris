@@ -26,16 +26,16 @@ class RowBlock extends Block{
             if(this.yPos >= size-1) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+1] == 1) {
+            } else if(board[this.xPos][this.yPos+1] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+1][this.yPos+1] == 1) {
+            } else if(board[this.xPos+1][this.yPos+1] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+2][this.yPos+1] == 1) {
+            } else if(board[this.xPos+2][this.yPos+1] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+3][this.yPos+1] == 1) {
+            } else if(board[this.xPos+3][this.yPos+1] != 0) {
                 this.end();
                 return true;
             }
@@ -43,7 +43,7 @@ class RowBlock extends Block{
             if(this.yPos >= size-4) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+4] == 1) {
+            } else if(board[this.xPos][this.yPos+4] != 0) {
                 this.end();
                 return true;
             }
@@ -56,11 +56,11 @@ class RowBlock extends Block{
 
         if(this.rotation % 180 == 0) {
             for (let i = 0; i < 4; i++) {
-                board[this.xPos+i][this.yPos] = 1;
+                board[this.xPos+i][this.yPos] = this.color;
             }
         } else {
             for (let i = 0; i < 4; i++) {
-                board[this.xPos][this.yPos+i] = 1;
+                board[this.xPos][this.yPos+i] = this.color;
             }
         }
     }

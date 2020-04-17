@@ -18,10 +18,10 @@ class SquareBlock extends Block{
         if(this.yPos >= size-2) {
             this.end();
             return true;
-        } else if(board[this.xPos][this.yPos+2] == 1) {
+        } else if(board[this.xPos][this.yPos+2] != 0) {
             this.end();
             return true;
-        } else if(board[this.xPos+1][this.yPos+2] == 1) {
+        } else if(board[this.xPos+1][this.yPos+2] != 0) {
             this.end();
             return true;
         }
@@ -33,7 +33,7 @@ class SquareBlock extends Block{
         this.speed = 0;
         for (let i = 0; i < 2; i++) {
             for(let j = 0; j < 2; j++) {
-                board[this.xPos+i][this.yPos+j] = 1;
+                board[this.xPos+i][this.yPos+j] = this.color;
             }
         }
 

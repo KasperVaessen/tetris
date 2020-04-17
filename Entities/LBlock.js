@@ -36,10 +36,10 @@ class LBlock extends Block{
             if(this.yPos+2 >= size-1) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+3] == 1) {
+            } else if(board[this.xPos][this.yPos+3] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+1][this.yPos+3] == 1) {
+            } else if(board[this.xPos+1][this.yPos+3] != 0) {
                 this.end();
                 return true;
             }
@@ -47,13 +47,13 @@ class LBlock extends Block{
             if(this.yPos+1 >= size-1) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+2] == 1) {
+            } else if(board[this.xPos][this.yPos+2] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+1][this.yPos+1] == 1) {
+            } else if(board[this.xPos+1][this.yPos+1] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+2][this.yPos+1] == 1) {
+            } else if(board[this.xPos+2][this.yPos+1] != 0) {
                 this.end();
                 return true;
             }
@@ -61,10 +61,10 @@ class LBlock extends Block{
             if(this.yPos+2 >= size-1) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+1] == 1) {
+            } else if(board[this.xPos][this.yPos+1] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+1][this.yPos+3] == 1) {
+            } else if(board[this.xPos+1][this.yPos+3] != 0) {
                 this.end();
                 return true;
             }
@@ -72,13 +72,13 @@ class LBlock extends Block{
             if(this.yPos+1 >= size-1) {
                 this.end();
                 return true;
-            } else if(board[this.xPos][this.yPos+2] == 1) {
+            } else if(board[this.xPos][this.yPos+2] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+1][this.yPos+2] == 1) {
+            } else if(board[this.xPos+1][this.yPos+2] != 0) {
                 this.end();
                 return true;
-            } else if(board[this.xPos+2][this.yPos+2] == 1) {
+            } else if(board[this.xPos+2][this.yPos+2] != 0) {
                 this.end();
                 return true;
             }
@@ -91,24 +91,24 @@ class LBlock extends Block{
 
         if(this.rotation == 0) {
             for (let i = 0; i < 3; i++) {
-                board[this.xPos][this.yPos+i] = 1;
+                board[this.xPos][this.yPos+i] = this.color;
             }
-            board[this.xPos+1][this.yPos+2] = 1;
+            board[this.xPos+1][this.yPos+2] = this.color;
         } else if(this.rotation == 90) {
             for (let i = 0; i < 3; i++) {
-                board[this.xPos+i][this.yPos+1] = 1;
+                board[this.xPos+i][this.yPos+1] = this.color;
             }
-            board[this.xPos][this.yPos] = 1;
+            board[this.xPos][this.yPos] = this.color;
         } else if(this.rotation == 180) {
             for (let i = 0; i < 3; i++) {
-                board[this.xPos+1][this.yPos+i] = 1;
+                board[this.xPos+1][this.yPos+i] = this.color;
             }
-            board[this.xPos][this.yPos] = 1;
+            board[this.xPos][this.yPos] = this.color;
         } else if(this.rotation == 270) {
             for (let i = 0; i < 3; i++) {
-                board[this.xPos+i][this.yPos+1] = 1;
+                board[this.xPos+i][this.yPos+1] = this.color;
             }
-            board[this.xPos+2][this.yPos] = 1;
+            board[this.xPos+2][this.yPos] = this.color;
         }
 
     }

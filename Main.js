@@ -7,6 +7,9 @@ function setup() {
     size = 15;
     for (let i = 0; i < size; i++) {
         board[i] = [];
+        for(let j = 0; j < size; j++) {
+            board[i][j] = 0;
+        }
     }
     speed = 1;
     createCanvas(size*40, size*40);
@@ -15,9 +18,15 @@ function setup() {
 
 function draw() {
     background(220);
-    for (let i = 0; i < blocks.length; i++) {
-        blocks[i].update(frameCount);
-        blocks[i].draw();
+    blocks[0].update(frameCount);
+    blocks[0].draw();
+    for (let i = 0; i < size; i++) {
+        for(let j = 0; j < size; j++) {
+            if(board[i][j] != 0) {
+                fill(board[i][j]);
+                rect(i*40,j*40,40,40);
+            }
+        }
     }
     if(blocks[0].onEdge()) {
         let number = random();
@@ -28,7 +37,30 @@ function draw() {
         } else {
             blocks.unshift(new LBlock(0, 0, 0, speed))
         }
+        for (let i = 0; i < size; i++) {
+            if(checkComplete(i)) {
+                console.log(i);
+                removeRow(i);
+            }
+        }
 
+    }
+}
+
+function checkComplete(row) {
+    for (let i = 0; i < size; i++) {
+        if(board[i][row] == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function removeRow(row) {
+    for (let i = 0; i < size; i++) {
+        for (let j = row; j > 1; j--) {
+            board[i][j] = board[i][j-1];
+        }
     }
 }
 
