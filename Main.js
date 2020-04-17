@@ -2,9 +2,11 @@ let speed;
 let blocks = [];
 let size;
 let board = [];
+let moveSpace;
 
 function setup() {
-    size = 15;
+    size = 20;
+    moveSpace = 5;
     for (let i = 0; i < size; i++) {
         board[i] = [];
         for(let j = 0; j < size; j++) {
@@ -18,6 +20,7 @@ function setup() {
 
 function draw() {
     background(220);
+    line(0, moveSpace*40, size*40, moveSpace*40)
     blocks[0].update(frameCount);
     blocks[0].draw();
     for (let i = 0; i < size; i++) {
@@ -43,7 +46,14 @@ function draw() {
                 removeRow(i);
             }
         }
+    }
 
+    if(checkGameOver()) {
+        fill("red");
+        textAlign(CENTER);
+        textSize(50);
+        text("GAME OVER", size*20, moveSpace*20);
+        noLoop();
     }
 }
 
@@ -62,6 +72,17 @@ function removeRow(row) {
             board[i][j] = board[i][j-1];
         }
     }
+}
+
+function checkGameOver() {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < moveSpace; j++) {
+            if(board[i][j] != 0) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function keyPressed() {
