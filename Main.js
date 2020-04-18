@@ -14,9 +14,9 @@ function setup() {
             board[i][j] = 0;
         }
     }
-    speed = 1;
+    speed = 2;
     createCanvas(size*40, size*40);
-    blocks.push(new LBlock(0, 0, 0, speed));
+    createRandom();
 }
 
 function draw() {
@@ -34,20 +34,7 @@ function draw() {
         }
     }
     if(blocks[0].onEdge()) {
-        let number = random();
-        if(number < 0.33) {
-            blocks.unshift(new RowBlock(0, 0, 0, speed))
-        } else if(number < 0.67) {
-            blocks.unshift(new SquareBlock(0, 0, 0, speed))
-        } else {
-            blocks.unshift(new LBlock(0, 0, 0, speed))
-        }
-        for (let i = 0; i < size; i++) {
-            if(checkComplete(i)) {
-                score += size;
-                removeRow(i);
-            }
-        }
+        createRandom();
     }
 
     if(checkGameOver()) {
@@ -56,6 +43,33 @@ function draw() {
         textSize(50);
         text("GAME OVER", size*20, moveSpace*20);
         noLoop();
+    }
+}
+
+function createRandom() {
+    let number = random();
+    let rotationOptions = [0, 90, 180, 270];
+    let rotation = random(rotationOptions);
+    if(number < 1/7) {
+        blocks.unshift(new RowBlock(rotation, floor(size/2)-1, 0, speed))
+    } else if(number < 2/7) {
+        blocks.unshift(new SquareBlock(rotation, floor(size/2)-1, 0, speed))
+    } else if(number < 3/7){
+        blocks.unshift(new LBlock(rotation, floor(size/2)-1, 0, speed))
+    } else if(number < 4/7){
+        blocks.unshift(new ZBlock(rotation, floor(size/2)-1, 0, speed))
+    } else if(number < 5/7){
+        blocks.unshift(new SBlock(rotation, floor(size/2)-1, 0, speed))
+    } else if(number < 6/7){
+        blocks.unshift(new JBlock(rotation, floor(size/2)-1, 0, speed))
+    } else {
+        blocks.unshift(new TBlock(rotation, floor(size/2)-1, 0, speed))
+    }
+    for (let i = 0; i < size; i++) {
+        if(checkComplete(i)) {
+            score += size;
+            removeRow(i);
+        }
     }
 }
 

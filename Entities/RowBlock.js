@@ -1,7 +1,7 @@
 class RowBlock extends Block{
     constructor(rotation, xPos, yPos, speed) {
         super(rotation, xPos, yPos, speed);
-        this.color = "blue";
+        this.color = "cyan";
     }
 
     draw() {
@@ -68,25 +68,31 @@ class RowBlock extends Block{
     updateX(direction) {
         if(direction == 1) {
             if(this.rotation % 180 == 0) {
-                if(this.xPos+4 != size && board[this.xPos+4][this.yPos] != 1) {
+                if(this.xPos+4 != size && board[this.xPos+4][this.yPos] == 0) {
                     this.xPos += direction;
                 }
             } else {
                 if(this.xPos+1 != size
-                    && board[this.xPos+1][this.yPos] != 1
-                    && board[this.xPos+1][this.yPos+1] != 1
-                    && board[this.xPos+1][this.yPos+2] != 1
-                    && board[this.xPos+1][this.yPos+3] != 1) {
+                    && board[this.xPos+1][this.yPos] == 0
+                    && board[this.xPos+1][this.yPos+1] == 0
+                    && board[this.xPos+1][this.yPos+2] == 0
+                    && board[this.xPos+1][this.yPos+3] == 0) {
                     this.xPos += direction;
                 }
             }
         } else if(direction == -1) {
-            if(this.xPos != 0
-                && board[this.xPos-1][this.yPos] != 1
-                && board[this.xPos-1][this.yPos+1] != 1
-                && board[this.xPos-1][this.yPos+2] != 1
-                && board[this.xPos-1][this.yPos+3] != 1) {
-                this.xPos += direction;
+            if(this.rotation % 180 == 0) {
+                if (this.xPos != 0 && board[this.xPos - 1][this.yPos] == 0) {
+                    this.xPos += direction;
+                }
+            } else {
+                if (this.xPos != 0
+                    && board[this.xPos - 1][this.yPos] == 0
+                    && board[this.xPos - 1][this.yPos + 1] == 0
+                    && board[this.xPos - 1][this.yPos + 2] == 0
+                    && board[this.xPos - 1][this.yPos + 3] == 0) {
+                    this.xPos += direction;
+                }
             }
         }
     }

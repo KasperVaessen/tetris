@@ -41,11 +41,11 @@ class SquareBlock extends Block{
 
     updateX(direction) {
         if(direction == 1) {
-            if(this.xPos+2 != size && board[this.xPos+2][this.yPos] != 1 && board[this.xPos+2][this.yPos+1] != 1) {
+            if(this.xPos+2 != size && board[this.xPos+2][this.yPos] == 0 && board[this.xPos+2][this.yPos+1] == 0) {
                 this.xPos += direction;
             }
         } else if(direction == -1) {
-            if(this.xPos != 0 && board[this.xPos-1][this.yPos] != 1 && board[this.xPos-1][this.yPos+1] != 1) {
+            if(this.xPos != 0 && board[this.xPos-1][this.yPos] == 0 && board[this.xPos-1][this.yPos+1] == 0) {
                 this.xPos += direction;
             }
         }
