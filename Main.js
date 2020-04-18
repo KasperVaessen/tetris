@@ -92,10 +92,8 @@ function removeRow(row) {
 
 function checkGameOver() {
     for (let i = 0; i < size; i++) {
-        for (let j = 0; j < moveSpace; j++) {
-            if(board[i][j] != 0) {
-                return true;
-            }
+        if(board[i][moveSpace-1] != 0) {
+            return true;
         }
     }
     return false;

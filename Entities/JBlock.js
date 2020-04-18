@@ -96,7 +96,7 @@ class JBlock extends Block{
             board[this.xPos][this.yPos+2] = this.color;
         } else if(this.rotation == 90) {
             for (let i = 0; i < 3; i++) {
-                board[this.xPos+i][this.yPos=1] = this.color;
+                board[this.xPos+i][this.yPos+1] = this.color;
             }
             board[this.xPos][this.yPos] = this.color;
         } else if(this.rotation == 180) {
