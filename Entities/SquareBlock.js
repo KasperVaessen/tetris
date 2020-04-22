@@ -16,13 +16,13 @@ class SquareBlock extends Block{
 
     onEdge() {
         if(this.yPos >= size-2) {
-            this.end();
+
             return true;
         } else if(board[this.xPos][this.yPos+2] != 0) {
-            this.end();
+
             return true;
         } else if(board[this.xPos+1][this.yPos+2] != 0) {
-            this.end();
+
             return true;
         }
 

@@ -34,52 +34,45 @@ class JBlock extends Block{
     onEdge() {
         if(this.rotation == 0) {
             if(this.yPos+2 >= size-1) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+3] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+1][this.yPos+3] != 0) {
-                this.end();
+
                 return true;
             }
         } else if(this.rotation == 90) {
             if(this.yPos+1 >= size-1) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+1][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+2][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             }
         }  else if(this.rotation == 180) {
             if(this.yPos+2 >= size-1) {
-                this.end();
                 return true;
             } else if(board[this.xPos][this.yPos+3] != 0) {
-                this.end();
                 return true;
             } else if(board[this.xPos+1][this.yPos+1] != 0) {
-                this.end();
                 return true;
             }
         }  else if(this.rotation == 270) {
             if(this.yPos+1 >= size-1) {
-                this.end();
                 return true;
             } else if(board[this.xPos][this.yPos+1] != 0) {
-                this.end();
                 return true;
             } else if(board[this.xPos+1][this.yPos+1] != 0) {
-                this.end();
                 return true;
             } else if(board[this.xPos+2][this.yPos+2] != 0) {
-                this.end();
                 return true;
             }
         }

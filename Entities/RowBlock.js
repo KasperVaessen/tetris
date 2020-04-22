@@ -24,27 +24,27 @@ class RowBlock extends Block{
     onEdge() {
         if(this.rotation % 180 == 0) {
             if(this.yPos >= size-1) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+1] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+1][this.yPos+1] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+2][this.yPos+1] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+3][this.yPos+1] != 0) {
-                this.end();
+
                 return true;
             }
         } else {
             if(this.yPos >= size-4) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+4] != 0) {
-                this.end();
+
                 return true;
             }
         }

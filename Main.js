@@ -34,7 +34,11 @@ function draw() {
         }
     }
     if(blocks[0].onEdge()) {
-        createRandom();
+        blocks[0].speed = 0;
+        if(frameCount % 60/speed === 0) {
+            blocks[0].end();
+            createRandom();
+        }
     }
 
     if(checkGameOver()) {

@@ -24,27 +24,27 @@ class SBlock extends Block{
     onEdge() {
         if(this.rotation % 180 == 0) {
             if(this.yPos+1 >= size-1) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+1][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+2][this.yPos+1] != 0) {
-                this.end();
+
                 return true;
             }
         } else {
             if(this.yPos+2 >= size-1) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos][this.yPos+2] != 0) {
-                this.end();
+
                 return true;
             } else if(board[this.xPos+1][this.yPos+3] != 0) {
-                this.end();
+
                 return true;
             }
         }

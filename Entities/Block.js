@@ -7,7 +7,7 @@ class Block {
     }
 
     update(frameRate) {
-        if(frameRate % (60/speed) == 0) {
+        if(frameRate % (60/this.speed) == 0) {
             this.yPos += 1;
         }
     }
