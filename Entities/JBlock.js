@@ -4,29 +4,32 @@ class JBlock extends Block{
         this.color = "blue";
     }
 
-    draw() {
+    draw(blockSize) {
+        if(blockSize === undefined) {
+            blockSize = 40;
+        }
         fill(this.color);
 
         if(this.rotation == 0) {
-            rect((this.xPos+1) * 40, (this.yPos) * 40, 40, 40);
-            rect((this.xPos+1) * 40, (this.yPos+1) * 40, 40, 40);
-            rect((this.xPos+1) * 40, (this.yPos+2) * 40, 40, 40);
-            rect((this.xPos) * 40, (this.yPos+2) * 40, 40, 40);
+            rect((this.xPos+1) * blockSize, (this.yPos) * blockSize, blockSize, blockSize);
+            rect((this.xPos+1) * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
+            rect((this.xPos+1) * blockSize, (this.yPos+2) * blockSize, blockSize, blockSize);
+            rect((this.xPos) * blockSize, (this.yPos+2) * blockSize, blockSize, blockSize);
         } else if(this.rotation == 90) {
-            rect(this.xPos * 40, this.yPos * 40, 40, 40);
-            rect(this.xPos * 40, (this.yPos+1) * 40, 40, 40);
-            rect((this.xPos+1) * 40, (this.yPos+1) * 40, 40, 40);
-            rect((this.xPos+2) * 40, (this.yPos+1) * 40, 40, 40);
+            rect(this.xPos * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect(this.xPos * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
+            rect((this.xPos+1) * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
+            rect((this.xPos+2) * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
         } else if(this.rotation == 180) {
-            rect((this.xPos+1) * 40, this.yPos * 40, 40, 40);
-            rect((this.xPos) * 40, this.yPos * 40, 40, 40);
-            rect((this.xPos) * 40, (this.yPos+1) * 40, 40, 40);
-            rect((this.xPos) * 40, (this.yPos+2) * 40, 40, 40);
+            rect((this.xPos+1) * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect((this.xPos) * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect((this.xPos) * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
+            rect((this.xPos) * blockSize, (this.yPos+2) * blockSize, blockSize, blockSize);
         } else if(this.rotation == 270) {
-            rect(this.xPos * 40, (this.yPos) * 40, 40, 40);
-            rect((this.xPos+1) * 40, (this.yPos) * 40, 40, 40);
-            rect((this.xPos+2) * 40, (this.yPos) * 40, 40, 40);
-            rect((this.xPos+2) * 40, (this.yPos+1) * 40, 40, 40);
+            rect(this.xPos * blockSize, (this.yPos) * blockSize, blockSize, blockSize);
+            rect((this.xPos+1) * blockSize, (this.yPos) * blockSize, blockSize, blockSize);
+            rect((this.xPos+2) * blockSize, (this.yPos) * blockSize, blockSize, blockSize);
+            rect((this.xPos+2) * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
         }
 
     }

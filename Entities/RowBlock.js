@@ -4,19 +4,22 @@ class RowBlock extends Block{
         this.color = "cyan";
     }
 
-    draw() {
+    draw(blockSize) {
+        if(blockSize === undefined) {
+            blockSize = 40;
+        }
         fill(this.color);
 
         if(this.rotation % 180 == 0) {
-            rect(this.xPos * 40, this.yPos * 40, 40, 40);
-            rect((this.xPos+1) * 40, this.yPos * 40, 40, 40);
-            rect((this.xPos+2) * 40, this.yPos * 40, 40, 40);
-            rect((this.xPos+3) * 40, this.yPos * 40, 40, 40);
+            rect(this.xPos * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect((this.xPos+1) * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect((this.xPos+2) * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect((this.xPos+3) * blockSize, this.yPos * blockSize, blockSize, blockSize);
         } else {
-            rect(this.xPos * 40, this.yPos * 40, 40, 40);
-            rect(this.xPos * 40, (this.yPos+1) * 40, 40, 40);
-            rect(this.xPos * 40, (this.yPos+2) * 40, 40, 40);
-            rect(this.xPos * 40, (this.yPos+3) * 40, 40, 40);
+            rect(this.xPos * blockSize, this.yPos * blockSize, blockSize, blockSize);
+            rect(this.xPos * blockSize, (this.yPos+1) * blockSize, blockSize, blockSize);
+            rect(this.xPos * blockSize, (this.yPos+2) * blockSize, blockSize, blockSize);
+            rect(this.xPos * blockSize, (this.yPos+3) * blockSize, blockSize, blockSize);
         }
 
     }

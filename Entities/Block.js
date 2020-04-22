@@ -12,8 +12,11 @@ class Block {
         }
     }
 
-    draw() {
-        rect(this.xPos * 40, this.yPos * 40, 40, 40);
+    draw(blockSize) {
+        if(blockSize === undefined) {
+            blockSize = 40;
+        }
+        rect(this.xPos * blockSize, this.yPos * blockSize, blockSize, blockSize);
     }
 
     updateX(direction) {

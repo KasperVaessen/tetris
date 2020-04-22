@@ -4,6 +4,7 @@ let size;
 let board = [];
 let moveSpace;
 let score = 0;
+let next;
 
 function setup() {
     size = 20;
@@ -16,12 +17,14 @@ function setup() {
     }
     speed = 2;
     createCanvas(size*40, size*40);
-    createRandom();
+    blocks.unshift(createRandom());
+    next = createRandom();
 }
 
 function draw() {
     background(220);
     writeScore();
+    drawNext();
     line(0, moveSpace*40, size*40, moveSpace*40)
     blocks[0].update(frameCount);
     blocks[0].draw();
@@ -37,7 +40,14 @@ function draw() {
         blocks[0].speed = 0;
         if(frameCount % 60/speed === 0) {
             blocks[0].end();
-            createRandom();
+            blocks.unshift(next);
+            next = createRandom();
+            for (let i = 0; i < size; i++) {
+                if(checkComplete(i)) {
+                    score += size;
+                    removeRow(i);
+                }
+            }
         }
     }
 
@@ -55,25 +65,19 @@ function createRandom() {
     let rotationOptions = [0, 90, 180, 270];
     let rotation = random(rotationOptions);
     if(number < 1/7) {
-        blocks.unshift(new RowBlock(rotation, floor(size/2)-1, 0, speed))
+        return new RowBlock(rotation, floor(size/2)-1, 0, speed)
     } else if(number < 2/7) {
-        blocks.unshift(new SquareBlock(rotation, floor(size/2)-1, 0, speed))
+        return new SquareBlock(rotation, floor(size/2)-1, 0, speed)
     } else if(number < 3/7){
-        blocks.unshift(new LBlock(rotation, floor(size/2)-1, 0, speed))
+        return new LBlock(rotation, floor(size/2)-1, 0, speed)
     } else if(number < 4/7){
-        blocks.unshift(new ZBlock(rotation, floor(size/2)-1, 0, speed))
+        return new ZBlock(rotation, floor(size/2)-1, 0, speed)
     } else if(number < 5/7){
-        blocks.unshift(new SBlock(rotation, floor(size/2)-1, 0, speed))
+        return new SBlock(rotation, floor(size/2)-1, 0, speed)
     } else if(number < 6/7){
-        blocks.unshift(new JBlock(rotation, floor(size/2)-1, 0, speed))
+        return new JBlock(rotation, floor(size/2)-1, 0, speed)
     } else {
-        blocks.unshift(new TBlock(rotation, floor(size/2)-1, 0, speed))
-    }
-    for (let i = 0; i < size; i++) {
-        if(checkComplete(i)) {
-            score += size;
-            removeRow(i);
-        }
+        return new TBlock(rotation, floor(size/2)-1, 0, speed)
     }
 }
 
@@ -108,6 +112,18 @@ function writeScore() {
     textAlign(RIGHT, TOP);
     textSize(20);
     text("Score: " + score, size*40-2, 2);
+}
+
+function drawNext() {
+    fill("black");
+    textAlign(RIGHT, TOP);
+    textSize(20);
+    text("Next block: ", size*40-2, 32);
+
+    push();
+    translate((size-5)*40, 60);
+    next.draw(15);
+    pop();
 }
 
 function keyPressed() {
