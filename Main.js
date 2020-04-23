@@ -138,6 +138,8 @@ function keyPressed() {
             blocks[0].rotation += 90;
         }
     } else if (keyCode === DOWN_ARROW) {
-        blocks[0].yPos += 1;
+        if(!blocks[0].onEdge()) {
+            blocks[0].yPos += 1;
+        }
     }
 }
