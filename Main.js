@@ -132,9 +132,9 @@ function keyPressed() {
     } else if (keyCode === RIGHT_ARROW) {
         blocks[0].updateX(1);
     } else if (keyCode === 32) {
-        if(blocks[0].rotation == 270) {
+        if(blocks[0].rotation == 270 && blocks[0].canRotate(0)) {
             blocks[0].rotation = 0;
-        } else {
+        } else if(blocks[0].canRotate(blocks[0].rotation + 90)){
             blocks[0].rotation += 90;
         }
     } else if (keyCode === DOWN_ARROW) {

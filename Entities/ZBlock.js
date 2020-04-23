@@ -54,6 +54,24 @@ class ZBlock extends Block{
         return false;
     }
 
+    canRotate(newAngle) {
+        if(newAngle % 180 == 0) {
+            if (board[this.xPos][(this.yPos)] == 0 &&
+                board[this.xPos+1][(this.yPos)] == 0 &&
+                board[this.xPos+1][(this.yPos+1)] == 0 &&
+                board[(this.xPos+2)][(this.yPos+1)] == 0) {
+                return true;
+            }
+        } else {
+            if (board[this.xPos][this.yPos+1] == 0 &&
+                board[this.xPos][(this.yPos+2)] == 0 &&
+                board[(this.xPos+1)][(this.yPos)] == 0 &&
+                board[(this.xPos+1)][(this.yPos+1)] == 0) {
+                return true;
+            }
+        }
+    }
+
     end() {
         this.speed = 0;
 

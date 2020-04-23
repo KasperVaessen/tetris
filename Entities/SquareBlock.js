@@ -32,6 +32,10 @@ class SquareBlock extends Block{
         return false;
     }
 
+    canRotate(newAngle) {
+        return true;
+    }
+
     end() {
         this.speed = 0;
         for (let i = 0; i < 2; i++) {
