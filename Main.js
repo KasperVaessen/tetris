@@ -36,6 +36,7 @@ function draw() {
             }
         }
     }
+    blocks[0].speed = speed;
     if(blocks[0].onEdge()) {
         blocks[0].speed = 0;
         if(frameCount % 60/speed === 0) {
