@@ -7,8 +7,8 @@ let score = 0;
 let next;
 
 function setup() {
-    size = 20;
-    moveSpace = 5;
+    size = 15;
+    moveSpace = 4;
     for (let i = 0; i < size; i++) {
         board[i] = [];
         for(let j = 0; j < size; j++) {
@@ -141,6 +141,12 @@ function keyPressed() {
     } else if (keyCode === DOWN_ARROW) {
         if(!blocks[0].onEdge()) {
             blocks[0].yPos += 1;
+        }
+    } else if (keyCode === 80) {
+        if(speed === 0) {
+            speed = 2;
+        } else {
+            speed = 0;
         }
     }
 }
